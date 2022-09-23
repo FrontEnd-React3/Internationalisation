@@ -5,13 +5,18 @@ import i18n from "i18next";
 import { initReactI18next, useTranslation } from "react-i18next";
 const translationsEn = {
   welcome: 'Welcome',
-  changed: "You changed the language{{count}} time",
-  changeddouble: "You changed the language{{count}} times",
+  changed: "You changed the language {{count}} time",
+  changed_other: "You changed the language {{count}} times",
 };
 const translationsDu = {
   welcome: 'Welkom',
   changed: "Je hebt de taal{{count}} keer veranderd",
-  changed_plural: "Je hebt de taal{{count}} keren veranderd",
+  changed_other: "Je hebt de taal{{count}} keren veranderd",
+};
+const translationsFr = {
+  welcome: 'Bienvenus',
+  changed: "Vous avez changé la langue {{count}} fois.",
+  changed_other: "Vous avez changé la langue {{count}} fois.",
 };
 i18n.use(initReactI18next)
   .init({
@@ -19,7 +24,10 @@ i18n.use(initReactI18next)
       en: { translation: translationsEn },
 
       du: { translation: translationsDu },
-    }, lng: "en", fallbackLng: "en", interpollation: { escapeValue: false },
+      fr: { translation: translationsFr },
+    }, lng: "en", fallbackLng: "en", interpollation: { escapeValue: true },
+
+
   });
 function App() {
   const { t } = useTranslation();
@@ -47,6 +55,7 @@ function App() {
           <select name="language" onChange={onChange} id="langaugeChanger">
             <option value="en">English</option>
             <option value="du">Dutch</option>
+            <option value="fr">French</option>
           </select>
         </header>
       </div ></Suspense>
